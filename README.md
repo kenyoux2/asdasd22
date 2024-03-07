@@ -9,7 +9,7 @@ local Window = Fluent:CreateWindow({
     TabWidth = 160,
     Size = UDim2.fromOffset(500, 350),
     Acrylic = false,
-    Theme = "Darker",
+    Theme = "Rose",
     MinimizeKey = Enum.KeyCode.End
 })
 local Tabs = {
@@ -2488,7 +2488,7 @@ ToggleButton.Size = UDim2.new(0, 50, 0, 50)
 ToggleButton.Font = Enum.Font.SourceSans
 ToggleButton.Text = "Zephyr"
 ToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-ToggleButton.TextSize = 14.000
+ToggleButton.TextSize = 15.000
 ToggleButton.Draggable = true
 ToggleButton.MouseButton1Click:Connect(function()
 	game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.End,false,game)
@@ -2506,7 +2506,7 @@ end
 --------------------------------------------------------------------------------------------------------------------------------------------
 --Create Tabs
 local Farming = Tabs.Main:AddSection("Farming")
-local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
+local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack()'}
 
     local DropdownDelayAttack = Tabs.Main:AddDropdown("DropdownDelayAttack", {
         Title = "Select Fast Attack",
@@ -2520,7 +2520,7 @@ local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
 	if _G.FastAttackFaiFao_Mode == "Fast Attack" then
 		_G.Fast_Delay = 0.10
 	elseif _G.FastAttackFaiFao_Mode == "Normal Attack" then
-		_G.Fast_Delay = 0.17
+		_G.Fast_Delay = 0.20
 	elseif _G.FastAttackFaiFao_Mode == "Super Fast Attack" then
 		_G.Fast_Delay = 0.05
 	end
@@ -2640,7 +2640,46 @@ end)
 
 
 
+        local ToggleCandy = Tabs.Main:AddToggle("ToggleCandy", {Title = "Auto Farm Candy ( Only Max Level )", Default = false })
+        ToggleCandy:OnChanged(function(Value)
+           _G.AutoCandy = Value
+        end)
+        Options.ToggleCandy:SetValue(false)
 
+		local CandyPos = CFrame.new(-16603.197265625, 130.3873748779297, 1087.16455078125)
+		spawn(function()
+				  while wait() do 
+					  if _G.AutoCandy then
+						  pcall(function()
+							toTargetP(CandyPos)
+							  if game:GetService("Workspace").Enemies:FindFirstChild("Isle Outlaw") or game:GetService("Workspace").Enemies:FindFirstChild("Island Boy") or game:GetService("Workspace").Enemies:FindFirstChild("Sun-kissed Warrior") or game:GetService("Workspace").Enemies:FindFirstChild("Isle Champion") then
+								  for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+									  if v.Name == "Isle Outlaw" or v.Name == "Island Boy" or v.Name == "Sun-kissed Warrior" or v.Name == "Isle Champion" then
+										 if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+											 repeat wait(_G.Fast_Delay)
+												 AttackNoCD()
+                                                 bringmob = true
+												 AutoHaki()
+												 EquipTool(SelectWeapon)
+												 toTarget(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+												 v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
+												 v.HumanoidRootPart.Transparency = 1
+												 v.Humanoid.JumpPower = 0
+												 v.Humanoid.WalkSpeed = 0
+												 v.HumanoidRootPart.CanCollide = false
+												 FarmPos = v.HumanoidRootPart.CFrame
+												 MonFarm = v.Name
+											  until not _G.AutoCandy or not v.Parent or v.Humanoid.Health <= 0
+                                              bringmob = false
+                                            end
+									  end
+								  end
+								toTarget(CFrame.new(-16599.1484375, 154.2681121826172, -166.32186889648438))
+							end
+						end)
+					  end
+				  end
+			  end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -2847,16 +2886,17 @@ spawn(function()
 end)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
+
     Tabs.Main:AddButton({
-       Title = "Discord Zephyr Hub",
-       Description = "Join Discord pls",
-       Callback = function()
-           discordlink()
+       Title = "Discord",
+       Description = "Join Discord Plss",
+     Callback = function()
+        discordlink()
     end
 })
 
-      function discordlink(Text)
-         setclipboard("https://discord.gg/dUdzZskBCC")
+   function discordlink(Text)
+      setclipboard("https://discord.gg/zH33Z2D8jXC")
 end
 
 
@@ -4999,9 +5039,7 @@ mouse.Button1Down:Connect(function()
     end
 end)
 
-
------------------------------------------------------------------------------------------------------------------------------------------------
-
+---------------------------------------------------------------------------------------------------------------------------------
 --Teleport
 local Teleport = Tabs.Teleport:AddSection("Teleport World")
 
@@ -6814,3 +6852,4 @@ spawn(function()
 end)
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------
+
