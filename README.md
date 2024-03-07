@@ -4999,50 +4999,6 @@ mouse.Button1Down:Connect(function()
     end
 end)
 
-local ToggleSoruNOCD = Tabs.Player:AddToggle("ToggleSoruNOCD", {Title = "Soru No Cooldown", Default = false })
-ToggleSoruNOCD:OnChanged(function(Value)
-    _G.SoruNoCd = Value
-	NoCooldown()
-end)
-Options.ToggleSoruNOCD:SetValue(false)
-function NoCooldown()
-	for i,v in next, getgc() do
-		if typeof(v) == "function" then
-			if getfenv(v).script == game.Players.LocalPlayer.Character:WaitForChild("Dodge") and _G.DashNoCd then
-				for i2,v2 in next, getupvalues(v) do
-					if tostring(v2) == "0.4" then
-						repeat wait(.1)
-							setupvalue(v,i2,0)
-						until not _G.DashNoCd
-					end
-				end
-			end
-			if getfenv(v).script == game.Players.LocalPlayer.Character:WaitForChild("Geppo") and _G.GeppoNoCd then
-				for i2,v2 in next, getupvalues(v) do
-					if tostring(v2) == "0" then
-						repeat wait(.1)
-							setupvalue(v,i2,0)
-						until not _G.GeppoNoCd
-					end
-				end
-			end
-			if getfenv(v).script == game.Players.LocalPlayer.Character:WaitForChild("Soru") and _G.SoruNoCd then
-				for i2,v2 in pairs(debug.getupvalues(v)) do
-					if type(v2) == 'table' then
-						if v2.LastUse then
-							repeat wait()
-								setupvalue(v, i2, {LastAfter = 0,LastUse = 0})
-							until not _G.SoruNoCd
-						end
-					end
-				end
-			end
-		end
-	end
-end
-
-
-
 local ToggleSpeedHack = Tabs.Player:AddToggle("ToggleSpeedHack", {Title = "Speed Hack", Default = true })
 ToggleSpeedHack:OnChanged(function(Value)
     _G.SpeedHack = Value
@@ -5088,23 +5044,6 @@ function InfAbility()
     end
 end
 
-local ToggleWalkOnWater = Tabs.Player:AddToggle("ToggleWalkOnWater", {Title = "Wakl On Water", Default = true })
-ToggleWalkOnWater:OnChanged(function(Value)
-    _G.WalkWater = Value
-end)
-Options.ToggleWalkOnWater:SetValue(true)
- 
-spawn(function()
-    while task.wait() do
-        pcall(function()
-            if _G.WalkWater then
-                game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,112,1000)
-            else
-                game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,80,1000)
-            end
-        end)
-    end
-end)
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
