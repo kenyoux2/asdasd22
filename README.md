@@ -5000,7 +5000,7 @@ mouse.Button1Down:Connect(function()
 end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------
-
+local Mastery = Tabs.Player:AddSection("Misc Pvp")
 
 local ToggleSoruNOCD = Tabs.Player:AddToggle("ToggleSoruNOCD", {Title = "Soru No Cooldown", Default = false })
 ToggleSoruNOCD:OnChanged(function(Value)
@@ -5140,7 +5140,6 @@ spawn(function()
         end)
     end
 end)
-]]
 -----------------------------------------------------------------------------------------------------------------------------------------------
 --Teleport
 local Teleport = Tabs.Teleport:AddSection("Teleport World")
