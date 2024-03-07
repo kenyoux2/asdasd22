@@ -5041,7 +5041,6 @@ function NoCooldown()
 	end
 end
 
-
 local ToggleGeppoNoCD = Tabs.Player:AddToggle("ToggleGeppoNoCD", {Title = "Geppo No Cooldown", Default = false })
 ToggleGeppoNoCD:OnChanged(function(Value)
     _G.GeppoNoCd = Value
@@ -5073,13 +5072,6 @@ function DodgeNoCoolDown()
         end
     end
 end
-
-local ToggleGeppoNoCD = Tabs.Player:AddToggle("ToggleGeppoNoCD", {Title = "Geppo No Cooldown", Default = false })
-ToggleGeppoNoCD:OnChanged(function(Value)
-    _G.GeppoNoCd = Value
-		NoCooldown()
-end)
-Options.ToggleGeppoNoCD:SetValue(false)
 
 local ToggleSpeedHack = Tabs.Player:AddToggle("ToggleSpeedHack", {Title = "Speed Hack", Default = true })
 ToggleSpeedHack:OnChanged(function(Value)
