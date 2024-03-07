@@ -5041,37 +5041,7 @@ function NoCooldown()
 	end
 end
 
-local ToggleGeppoNoCD = Tabs.Player:AddToggle("ToggleGeppoNoCD", {Title = "Geppo No Cooldown", Default = false })
-ToggleGeppoNoCD:OnChanged(function(Value)
-    _G.GeppoNoCd = Value
-		NoCooldown()
-end)
-Options.ToggleGeppoNoCD:SetValue(false)
---------------------------------------------------------------------------------------------------------------------------------------------
-local ToggleDashNoCD = Tabs.Player:AddToggle("ToggleDashNoCD", {Title = "Dash No Cooldown", Default = false })
-ToggleDashNoCD:OnChanged(function(Value)
-    _G.DashNoCd = Value
-    DodgeNoCoolDown()
-end)
-Options.ToggleDashNoCD:SetValue(false)
-function DodgeNoCoolDown()
-    if _G.DashNoCd then
-        for i, v in next, getgc() do
-            if game.Players.LocalPlayer.Character.Dodge then
-                if typeof(v) == "function" and getfenv(v).script == game.Players.LocalPlayer.Character.Dodge then
-                    for i2, v2 in next, getupvalues(v) do
-                        if tostring(v2) == "0.4" then
-                            repeat
-                                wait(.1)
-                                setupvalue(v, i2, 0)
-                            until not _G.DashNoCd
-                        end
-                    end
-                end
-            end
-        end
-    end
-end
+
 
 local ToggleSpeedHack = Tabs.Player:AddToggle("ToggleSpeedHack", {Title = "Speed Hack", Default = true })
 ToggleSpeedHack:OnChanged(function(Value)
