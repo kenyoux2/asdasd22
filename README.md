@@ -4999,28 +4999,7 @@ mouse.Button1Down:Connect(function()
     end
 end)
 
---------------------------------------------------------------------------------------------------------------------------------------------
 
-
---------------------------------------------------------------------------------------------------------------------------------------------
-local ToggleWalkOnWater = Tabs.Player:AddToggle("ToggleWalkOnWater", {Title = "Wakl On Water", Default = true })
-ToggleWalkOnWater:OnChanged(function(Value)
-    _G.WalkWater = Value
-end)
-Options.ToggleWalkOnWater:SetValue(true)
- 
-spawn(function()
-    while task.wait() do
-        pcall(function()
-            if _G.WalkWater then
-                game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,112,1000)
-            else
-                game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,80,1000)
-            end
-        end)
-    end
-end)
------------------------------------------------------------------------------------------------------------------------------------------------
 --Teleport
 local Teleport = Tabs.Teleport:AddSection("Teleport World")
 
