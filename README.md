@@ -9,7 +9,7 @@ local Window = Fluent:CreateWindow({
     TabWidth = 160,
     Size = UDim2.fromOffset(500, 350),
     Acrylic = false,
-    Theme = "Rose",
+    Theme = "Dark",
     MinimizeKey = Enum.KeyCode.End
 })
 local Tabs = {
@@ -2486,9 +2486,9 @@ ToggleButton.BorderSizePixel = 0
 ToggleButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
 ToggleButton.Size = UDim2.new(0, 50, 0, 50)
 ToggleButton.Font = Enum.Font.SourceSans
-ToggleButton.Text = "Zephyr"
+ToggleButton.Text = "Alchemy"
 ToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-ToggleButton.TextSize = 15.000
+ToggleButton.TextSize = 14.000
 ToggleButton.Draggable = true
 ToggleButton.MouseButton1Click:Connect(function()
 	game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.End,false,game)
@@ -2506,7 +2506,7 @@ end
 --------------------------------------------------------------------------------------------------------------------------------------------
 --Create Tabs
 local Farming = Tabs.Main:AddSection("Farming")
-local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack()'}
+local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
 
     local DropdownDelayAttack = Tabs.Main:AddDropdown("DropdownDelayAttack", {
         Title = "Select Fast Attack",
@@ -2518,9 +2518,9 @@ local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack()'}
     DropdownDelayAttack:OnChanged(function(Value)
     _G.FastAttackFaiFao_Mode = Value
 	if _G.FastAttackFaiFao_Mode == "Fast Attack" then
-		_G.Fast_Delay = 0.10
+		_G.Fast_Delay = 0.17
 	elseif _G.FastAttackFaiFao_Mode == "Normal Attack" then
-		_G.Fast_Delay = 0.20
+		_G.Fast_Delay = 0.25
 	elseif _G.FastAttackFaiFao_Mode == "Super Fast Attack" then
 		_G.Fast_Delay = 0.05
 	end
@@ -2887,17 +2887,8 @@ end)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 
-    Tabs.Main:AddButton({
-       Title = "Discord",
-       Description = "Join Discord Plss",
-     Callback = function()
-        discordlink()
-    end
-})
 
-   function discordlink(Text)
-      setclipboard("https://discord.gg/zH33Z2D8jXC")
-end
+
 
 
 
@@ -6995,4 +6986,3 @@ spawn(function()
 end)
 end
 ----------------------------------------------------------------------------------------------------------------------------------------------
-
