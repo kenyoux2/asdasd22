@@ -26,7 +26,7 @@ local Tabs = {
     Hop = Window:AddTab({ Title = "Hop", Icon = "wifi" }),
 }
 local Options = Fluent.Options
-
+do
 --------------------------------------------------------------------------------------------------------------------------------------------
 --Place Id Check
 local id = game.PlaceId
