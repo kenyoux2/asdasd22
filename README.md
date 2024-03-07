@@ -5,7 +5,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 ----------------------------------------------------------------------------------------------------------------------------------------------
 local Window = Fluent:CreateWindow({
     Title = "Zephyr Hub",
-    SubTitle = "Version 2",
+    SubTitle = "Version 1.01",
     TabWidth = 160,
     Size = UDim2.fromOffset(500, 350),
     Acrylic = false,
@@ -2486,9 +2486,9 @@ ToggleButton.BorderSizePixel = 0
 ToggleButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
 ToggleButton.Size = UDim2.new(0, 50, 0, 50)
 ToggleButton.Font = Enum.Font.SourceSans
-ToggleButton.Text = "Open|Close"
+ToggleButton.Text = "Zephyr Hub"
 ToggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-ToggleButton.TextSize = 14.000
+ToggleButton.TextSize = 15.000
 ToggleButton.Draggable = true
 ToggleButton.MouseButton1Click:Connect(function()
 	game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.End,false,game)
@@ -2518,9 +2518,9 @@ local listfastattack = {'Normal Attack','Fast Attack','Super Fast Attack'}
     DropdownDelayAttack:OnChanged(function(Value)
     _G.FastAttackFaiFao_Mode = Value
 	if _G.FastAttackFaiFao_Mode == "Fast Attack" then
-		_G.Fast_Delay = 0.17
+		_G.Fast_Delay = 0.10
 	elseif _G.FastAttackFaiFao_Mode == "Normal Attack" then
-		_G.Fast_Delay = 0.25
+		_G.Fast_Delay = 0.20
 	elseif _G.FastAttackFaiFao_Mode == "Super Fast Attack" then
 		_G.Fast_Delay = 0.05
 	end
@@ -2887,8 +2887,17 @@ end)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 
+    Tabs.Main:AddButton({
+       Title = "Discord",
+       Description = "Join Discord Plss",
+     Callback = function()
+        discordlink()
+    end
+})
 
-
+   function discordlink(Text)
+      setclipboard("https://discord.gg/zH33Z2D8jXC")
+end
 
 
 
