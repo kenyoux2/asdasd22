@@ -76,11 +76,12 @@ do
  end
  
  --Auto Farm
- local ToggleLevel = Tabs.Main:AddToggle("ToggleLevel", {Title = "Auto Level", Default = true })
- ToggleLevel:OnChanged(function(Value)
-     _G.AutoLevel = Value
+ local ToggleFarm = Tabs.Main:AddToggle("ToggleFarm", {Title = "Auto Farm", Default = true })
+ ToggleFarm:OnChanged(function(Value)
+     _G.AutoFarm = Value
  end)
  Options.ToggleLevel:SetValue(false)
+ if _G.AutoFarm then
  StartPosition = CFrame.new(4940.19775, 66.0195084, -1933.99927, 0.343969434, -0.00796990748, -0.938947022, 0.00281227613, 0.999968231, -0.00745762791, 0.938976645, -7.53822824e-05, 0.343980938)
  EndPosition = CFrame.new(1827.3407, 66.0150146, -658.946655, -0.366112858, 0.00818905979, 0.930534422, 0.00240773871, 0.999966264, -0.00785277691, -0.930567324, -0.000634518801, -0.366120219)
  AutoFarmFunc = coroutine.create(function()
@@ -104,7 +105,12 @@ do
  end)
  
  --Anti AFK
- AntiAFK = true
+ local ToggleAFK = Tabs.Main:AddToggle("ToggleAFK", {Title = "Anti AFK", Default = true })
+ ToggleAFK:OnChanged(function(Value)
+     _G.AutoAFK = Value
+ end)
+ Options.ToggleAFK:SetValue(false)
+ if _G.AutoAFK then
  LocalPlayer.Idled:Connect(function()
      VirtualUser:CaptureController()
      VirtualUser:ClickButton2(Vector2.new(), Camera.CFrame)
