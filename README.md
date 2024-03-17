@@ -17,7 +17,7 @@ local Tabs = {
 local Options = Fluent.Options
 do
 
- 
+
  local ToggleFarm = Tabs.Main:AddToggle("ToggleFarm", {Title = "Auto Farm", Default = false })
  ToggleFarm:OnChanged(function(Value)
      _G.AutoFarm = Value
@@ -53,6 +53,10 @@ do
  LocalPlayer.Idled:Connect(function()
     VirtualUser:CaptureController()
     VirtualUser:ClickButton2(Vector2.new(), Camera.CFrame)
-end)
+      end
+    end
+   end
+   end)
+end
 
 
