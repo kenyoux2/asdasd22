@@ -17,26 +17,7 @@ local Tabs = {
 local Options = Fluent.Options
 do
 
-local id = game.PlaceId
-if id == 3351674303
-
- --Vars
- LocalPlayer = game:GetService("Players").LocalPlayer
- Camera = workspace.CurrentCamera
- VirtualUser = game:GetService("VirtualUser")
- MarketplaceService = game:GetService("MarketplaceService")
  
- --Get Current Vehicle
- function GetCurrentVehicle()
-     return LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid") and LocalPlayer.Character.Humanoid.SeatPart and LocalPlayer.Character.Humanoid.SeatPart.Parent
- end
- 
- --Regular TP
- function TP(cframe)
-     GetCurrentVehicle():SetPrimaryPartCFrame(cframe)
- end
-
-
  local ToggleFarm = Tabs.Main:AddToggle("ToggleFarm", {Title = "Auto Farm", Default = false })
  ToggleFarm:OnChanged(function(Value)
      _G.AutoFarm = Value
